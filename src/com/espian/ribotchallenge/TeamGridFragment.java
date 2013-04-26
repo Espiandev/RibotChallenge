@@ -22,7 +22,7 @@ public class TeamGridFragment extends GridFragment implements LoaderManager.Load
 
 	public void onActivityCreated(Bundle saved) {
 		super.onActivityCreated(saved);
-		getLoaderManager().initLoader(-1, null, this).forceLoad();
+		getLoaderManager().initLoader(RibotMainActivity.LOADER_TEAM, null, this).forceLoad();
 		mAdapter = new RibotAdapter(getActivity());
 		getGridView().setNumColumns(2);
 		getGridView().setAdapter(mAdapter);

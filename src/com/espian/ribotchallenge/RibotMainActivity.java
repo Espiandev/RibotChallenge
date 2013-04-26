@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class RibotMainActivity extends Activity
-{
+public class RibotMainActivity extends Activity {
+
+	public static final int LOADER_TEAM = 1;
+	public static final int LOADER_STUDIO = 3;
+	public static final int LOADER_IMAGES = 4;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -29,7 +29,8 @@ public class StudioImageLoader extends AsyncTaskLoader<List<Bitmap>> implements 
 	public List<Bitmap> loadInBackground() {
 
 		// First check if there is at least one cached image
-		if (new File(getContext().getCacheDir(), "studio0.jpg").exists()) {
+		boolean hasCache = new File(getContext().getCacheDir(), "studio0.jpg").exists();
+		if (hasCache) {
 			File[] files = getContext().getCacheDir().listFiles(this);
 			List<Bitmap> fileBitmaps = new ArrayList<Bitmap>();
 			for (File file : files) {
@@ -39,9 +40,10 @@ public class StudioImageLoader extends AsyncTaskLoader<List<Bitmap>> implements 
 		}
 
 		// Else, load them off the network
+		List<Bitmap> loadedBitmaps = null;
 		for (String url : mUrls) {
 
-			List<Bitmap> loadedBitmaps = new ArrayList<Bitmap>();
+			if (loadedBitmaps == null) loadedBitmaps = new ArrayList<Bitmap>();
 			HttpURLConnection connection = null;
 			try {
 
@@ -57,14 +59,13 @@ public class StudioImageLoader extends AsyncTaskLoader<List<Bitmap>> implements 
 					i++;
 				}
 				FileOutputStream cacheWriter = new FileOutputStream(currentProbe);
-				boolean cacheSuccess = result.compress(Bitmap.CompressFormat.JPEG, 0, cacheWriter);
+				boolean cacheSuccess = result.compress(Bitmap.CompressFormat.JPEG, 100, cacheWriter);
 				if (!cacheSuccess) {
 					// Couldn't write to cache, make sure the cache file is deleted so we can try next time
 					currentProbe.delete();
 				}
 
 				connection.disconnect();
-				return loadedBitmaps;
 
 
 			} catch (MalformedURLException e) {
@@ -76,8 +77,8 @@ public class StudioImageLoader extends AsyncTaskLoader<List<Bitmap>> implements 
 			}
 
 		}
+		return loadedBitmaps;
 
-		return null;
 	}
 
 	@Override

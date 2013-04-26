@@ -46,5 +46,5 @@
         android:layout_height="wrap_content"
         android:text="On Google Maps"
         android:id="@+id/buttonMaps"
-        android:background="@android:attr/selectableItemBackground" />
+        android:background="?android:attr/selectableItemBackground" />
 </LinearLayout>
