@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <ImageView
+        android:layout_width="192dp"
+        android:layout_height="192dp"
+        android:id="@+id/desc_image"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentTop="false"
+        android:scaleType="fitStart" />
+
+    <TextView
+        android:text="Name"
+        android:id="@+id/desc_name"
+        android:layout_below="@+id/desc_image"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="8dp"
+        style="@style/heroText" />
+
+    <TextView
+        android:text="Role"
+        android:id="@+id/desc_role"
+        android:layout_alignLeft="@+id/desc_name"
+        android:layout_alignRight="@+id/desc_name"
+        android:layout_below="@+id/desc_name"
+        style="@style/emphasis" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:showDividers="middle"
+        android:layout_alignTop="@+id/desc_image"
+        android:layout_alignBottom="@+id/desc_image"
+        android:layout_alignParentRight="true"
+        android:id="@+id/buttonLayout"
+        android:divider="?android:attr/dividerVertical">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton"
+            android:layout_weight="1"
+            android:src="@drawable/ic_action_email" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton1"
+            android:layout_weight="1"
+            android:src="@drawable/ic_action_twitter" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton2"
+            android:layout_weight="1"
+            android:src="@drawable/ic_contact_place" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/desc_role"
+        android:id="@+id/extendedLayout">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:id="@+id/desc_desc"
+            android:layout_alignLeft="@+id/desc_name"
+            android:layout_alignRight="@+id/desc_name"
+            android:layout_below="@+id/desc_role"
+            android:layout_marginTop="8dp"
+            android:textAppearance="@android:style/TextAppearance.Medium" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Favourite sweet"
+            android:id="@+id/labelSweet"
+            android:layout_alignLeft="@+id/desc_image"
+            android:layout_below="@+id/desc_desc"
+            style="@style/emphasis"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/desc_sweet"
+            android:layout_alignLeft="@+id/desc_image"
+            android:layout_below="@+id/labelSweet"
+            android:textAppearance="@android:style/TextAppearance.Medium" />
+
+        <TextView
+            style="@style/emphasis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Favourite season"
+            android:id="@+id/labelSeason"
+            android:layout_alignLeft="@+id/desc_image"
+            android:layout_below="@+id/desc_sweet"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/desc_season"
+            android:layout_alignLeft="@+id/desc_image"
+            android:layout_below="@+id/labelSeason"
+            android:textAppearance="@android:style/TextAppearance.Medium" />
+    </LinearLayout>
+
+</RelativeLayout>    </ScrollView>
