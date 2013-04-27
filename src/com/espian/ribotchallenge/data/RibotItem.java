@@ -4,7 +4,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
-import org.json.JSONException;
+import com.espian.ribotchallenge.SafeJsonObject;
 import org.json.JSONObject;
 
 import java.net.URLEncoder;
@@ -38,35 +38,32 @@ public class RibotItem implements Parcelable {
 	 * @param json            Object to construct the RibotItem
 	 * @param isLightResponse Whether the API call was from /team, not /team/:id (which has less data)
 	 */
-	public RibotItem(JSONObject json, boolean isLightResponse) throws IllegalArgumentException {
-		try {
+	public RibotItem(JSONObject json, boolean isLightResponse) {
 
-			// Absolutely required items
-			id = json.getString("id");
-			firstName = json.getString("firstName");
-			lastName = json.getString("lastName");
+		SafeJsonObject safeJson = new SafeJsonObject(json, false);
 
-			// Optional items also available in the lightweight response
-			if (!json.isNull("hexColor")) hexColor = Color.parseColor(json.getString("hexColor"));
-			if (!json.isNull("nickname")) nickname = json.getString("nickname");
-			if (!json.isNull("role")) role = json.getString("role");
+		// Absolutely required items
+		id = safeJson.getString("id");
+		firstName = safeJson.getString("firstName");
+		lastName = safeJson.getString("lastName");
 
-			if (!isLightResponse) {
+		// Optional items also available in the lightweight response
+		if (!json.isNull("hexColor")) hexColor = Color.parseColor(safeJson.getString("hexColor"));
+		if (!json.isNull("nickname")) nickname = safeJson.getString("nickname");
+		if (!json.isNull("role")) role = safeJson.getString("role");
 
-				// Optional items available in a full response, from /team/:id
-				if (!json.isNull("description")) description = json.getString("description");
-				if (!json.isNull("twitter")) twitter = json.getString("twitter");
-				if (!json.isNull("favSweet")) favSweet = json.getString("favSweet");
-				if (!json.isNull("favSeason")) favSeason = json.getString("favSeason");
-				if (!json.isNull("email")) email = json.getString("email");
-				if (!json.isNull("location")) location = json.getString("location");
+		if (!isLightResponse) {
 
-			}
+			// Optional items available in a full response, from /team/:id
+			if (!json.isNull("description")) description = safeJson.getString("description");
+			if (!json.isNull("twitter")) twitter = safeJson.getString("twitter");
+			if (!json.isNull("favSweet")) favSweet = safeJson.getString("favSweet");
+			if (!json.isNull("favSeason")) favSeason = safeJson.getString("favSeason");
+			if (!json.isNull("email")) email = safeJson.getString("email");
+			if (!json.isNull("location")) location = safeJson.getString("location");
 
-		} catch (JSONException e) {
-			// If we've got here, something has gone really wrong
-			throw new IllegalArgumentException("Couldn't create RibotItem from JSON", e);
 		}
+
 	}
 
 	public String getDescription() {

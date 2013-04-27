@@ -1,17 +1,14 @@
 package com.espian.ribotchallenge.loaders;
 
-import android.content.AsyncTaskLoader;
 import android.content.Context;
-import android.util.Log;
 import com.espian.ribotchallenge.data.RibotItem;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,26 +16,21 @@ import java.util.List;
  * Author: Alex Curran
  * Date: 26/04/2013
  */
-public class TeamListLoader extends AsyncTaskLoader<List<RibotItem>> {
+public class TeamListLoader extends BaseHttpLoader<List<RibotItem>> {
 
 	public static final String API_POINT = "http://theribots.nodejitsu.com/api/team";
 
 	public TeamListLoader(Context context) {
-		super(context);
+		super(context, API_POINT);
 	}
 
 	@Override
-	public List<RibotItem> loadInBackground() {
+	public List<RibotItem> parseInputStream(InputStream stream) {
 
-		//TODO: deal with connection errors
-		HttpURLConnection apiConnection = null;
-		String fullResponse = "";
 		try {
 
-			apiConnection = (HttpURLConnection) new URL(API_POINT).openConnection();
-			String buffer;
-			// TODO: check response is JSON with header
-			BufferedReader apiReader = new BufferedReader(new InputStreamReader(apiConnection.getInputStream()));
+			BufferedReader apiReader = new BufferedReader(new InputStreamReader(stream));
+			String buffer, fullResponse = "";
 			while ((buffer = apiReader.readLine()) != null) {
 				fullResponse += buffer;
 			}
@@ -55,18 +47,13 @@ public class TeamListLoader extends AsyncTaskLoader<List<RibotItem>> {
 				}
 
 			}
-			apiConnection.disconnect();
 			return ribotItems;
 
-		} catch (IOException e) {
-			Log.d("TeamListLoader", fullResponse);
-			e.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
 		} catch (JSONException e) {
 			e.printStackTrace();
-		} finally {
-			if (apiConnection != null) apiConnection.disconnect();
 		}
-
 		return null;
 	}
 

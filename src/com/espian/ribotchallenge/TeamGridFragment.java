@@ -52,7 +52,7 @@ public class TeamGridFragment extends GridFragment implements LoaderManager.Load
 
 	@Override
 	public void onLoaderReset(Loader <List<RibotItem>> loader) {
-		loader.abandon();
+		loader.cancelLoad();
 	}
 
 	@Override
