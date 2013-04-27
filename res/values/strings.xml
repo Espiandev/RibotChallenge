@@ -2,4 +2,10 @@
 <resources>
     <string name="app_name">Ribot</string>
     <string name="fav_sweet">Favourite sweet</string>
+    <string name="favourite_season">Favourite season</string>
+    <string name="favourite_sweet">Favourite sweet</string>
+    <string name="data_load_error">Couldn\'t load data</string>
+    <string name="sad_face">:(</string>
+    <string name="loading">Loading</string>
+    <string name="gmaps_button">On Google Maps</string>
 </resources>

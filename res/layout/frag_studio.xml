@@ -1,50 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_weight="1">
 
-        <ImageView
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="152dp"
-            android:id="@+id/imageView"
-            android:scaleType="centerCrop" />
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="152dp"
-            android:id="@+id/imageView1"
-            android:scaleType="centerCrop" />
-    </FrameLayout>
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Ribot"
-        android:id="@+id/textView"
-        style="@style/heroText"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="8dp" />
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="152dp"
+                    android:id="@+id/imageView"
+                    android:scaleType="centerCrop" />
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView1"
-        android:textAppearance="@android:style/TextAppearance.Medium"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:layout_weight="1"
-        android:paddingTop="8dp" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="152dp"
+                    android:id="@+id/imageView1"
+                    android:scaleType="centerCrop" />
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:id="@+id/textView"
+                style="@style/heroText"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp" />
+
+            <TextView
+                android:id="@+id/studio_address"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp"
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                tools:ignore="SelectableText" />
+
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="On Google Maps"
+        android:text="@string/gmaps_button"
         android:id="@+id/buttonMaps"
         android:background="?android:attr/selectableItemBackground" />
+
 </LinearLayout>

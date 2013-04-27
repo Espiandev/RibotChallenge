@@ -1,6 +1,5 @@
 package com.espian.ribotchallenge;
 
-import android.R;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.StateListDrawable;
@@ -20,8 +19,8 @@ public class Utilities {
 
 		StateListDrawable drawable = new StateListDrawable();
 		drawable.setExitFadeDuration(300);
-		drawable.addState(new int[] { R.attr.state_pressed}, new ColorDrawable(color));
-		drawable.addState(new int[] { R.attr.state_empty}, new ColorDrawable(Color.TRANSPARENT));
+		drawable.addState(new int[] { android.R.attr.state_pressed}, new ColorDrawable(color));
+		drawable.addState(new int[] { android.R.attr.state_empty}, new ColorDrawable(Color.TRANSPARENT));
 		return drawable;
 
 	}

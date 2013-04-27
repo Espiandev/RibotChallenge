@@ -53,9 +53,9 @@ public class PersonDetailFragment extends Fragment implements LoaderManager.Load
 		(heroImage = (ImageView) v.findViewById(R.id.desc_image)).setBackgroundColor(ribotItem.getHexColor());
 
 		// Annoyingly, we must create a separate drawable for each button, else strange things happen
-		(emailButton    = (ImageButton) v.findViewById(R.id.imageButton)).setBackground(Utilities.getButtonDrawable(ribotItem.getHexColor()));
-		(twitterButton  = (ImageButton) v.findViewById(R.id.imageButton1)).setBackground(Utilities.getButtonDrawable(ribotItem.getHexColor()));
-		(mapButton      = (ImageButton) v.findViewById(R.id.imageButton2)).setBackground(Utilities.getButtonDrawable(ribotItem.getHexColor()));
+		(emailButton    = (ImageButton) v.findViewById(R.id.imageButton)).setBackgroundDrawable(Utilities.getButtonDrawable(ribotItem.getHexColor()));
+		(twitterButton  = (ImageButton) v.findViewById(R.id.imageButton1)).setBackgroundDrawable(Utilities.getButtonDrawable(ribotItem.getHexColor()));
+		(mapButton      = (ImageButton) v.findViewById(R.id.imageButton2)).setBackgroundDrawable(Utilities.getButtonDrawable(ribotItem.getHexColor()));
 
 		// Get all the items found in the extended layout
 		description     = (TextView) v.findViewById(R.id.desc_desc);
@@ -136,7 +136,7 @@ public class PersonDetailFragment extends Fragment implements LoaderManager.Load
 	/**
 	 * Associate a ACTION_VIEW Intent with a button's click, or hide the button if the Uri is null
 	 * @param button The button to associate
-	 * @param viewRi Seriously, say it out loud.
+	 * @param viewRi Say it out loud!
 	 */
 	public void setButtonClick(View button, final Uri viewRi) {
 		if (viewRi != null) {

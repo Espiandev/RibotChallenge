@@ -2,6 +2,10 @@
 .idea/
 RibotChallenge.iml
 
+# Eclipse files
+.classpath
+.project
+
 # Generated files
 bin/
 gen/
