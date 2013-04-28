@@ -1,4 +1,4 @@
-package com.espian.ribotchallenge;
+package com.espian.ribotchallenge.fragments;
 
 import android.animation.ObjectAnimator;
 import android.app.Fragment;
@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.espian.ribotchallenge.R;
+import com.espian.ribotchallenge.RibotMainActivity;
+import com.espian.ribotchallenge.util.SafeJsonObject;
 import com.espian.ribotchallenge.loaders.StudioDataLoader;
 import com.espian.ribotchallenge.loaders.StudioImageLoader;
 import org.json.JSONArray;
@@ -58,10 +61,8 @@ public class StudioFragment extends Fragment implements
 
 	@Override
 	public Loader onCreateLoader(int id, Bundle args) {
-		if (id == RibotMainActivity.LOADER_IMAGES)
-			return new StudioImageLoader(getActivity(), urls);
-		else
-			return new StudioDataLoader(getActivity());
+		if (id == RibotMainActivity.LOADER_IMAGES) return new StudioImageLoader(getActivity(), urls);
+		else return new StudioDataLoader(getActivity());
 	}
 
 	@Override

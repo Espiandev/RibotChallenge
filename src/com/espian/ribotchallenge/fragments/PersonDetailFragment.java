@@ -1,4 +1,4 @@
-package com.espian.ribotchallenge;
+package com.espian.ribotchallenge.fragments;
 
 import android.app.Fragment;
 import android.app.LoaderManager;
@@ -15,6 +15,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.espian.ribotchallenge.util.LoadHideHelper;
+import com.espian.ribotchallenge.R;
+import com.espian.ribotchallenge.util.Utilities;
 import com.espian.ribotchallenge.data.RibotItem;
 import com.espian.ribotchallenge.loaders.SingleItemLoader;
 

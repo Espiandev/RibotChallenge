@@ -1,4 +1,4 @@
-package com.espian.ribotchallenge;
+package com.espian.ribotchallenge.util;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;

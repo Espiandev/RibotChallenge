@@ -1,9 +1,11 @@
 package com.espian.ribotchallenge;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.espian.ribotchallenge.fragments.TeamGridFragment;
 
 public class RibotMainActivity extends Activity {
 
@@ -30,10 +32,7 @@ public class RibotMainActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// As there's only one menu item, we don't have to be specific
-		getFragmentManager().beginTransaction()
-				.replace(R.id.mainFrame, new StudioFragment())
-				.addToBackStack(null)
-				.commit();
+		startActivity(new Intent(this, StudioActivity.class));
 		return true;
 	}
 

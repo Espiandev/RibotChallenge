@@ -4,7 +4,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
-import com.espian.ribotchallenge.SafeJsonObject;
+import com.espian.ribotchallenge.util.SafeJsonObject;
 import org.json.JSONObject;
 
 import java.net.URLEncoder;

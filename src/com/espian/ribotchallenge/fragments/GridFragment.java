@@ -1,4 +1,4 @@
-package com.espian.ribotchallenge;
+package com.espian.ribotchallenge.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import com.espian.ribotchallenge.R;
 
 /**
  * Author: Alex Curran

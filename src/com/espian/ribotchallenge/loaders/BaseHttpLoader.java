@@ -25,7 +25,6 @@ public abstract class BaseHttpLoader<D> extends AsyncTaskLoader<D> {
 	@Override
 	public D loadInBackground() {
 
-		//TODO: deal with connection errors
 		HttpURLConnection apiConnection = null;
 		String fullResponse = "";
 		try {

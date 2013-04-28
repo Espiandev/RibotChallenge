@@ -1,4 +1,4 @@
-package com.espian.ribotchallenge;
+package com.espian.ribotchallenge.fragments;
 
 import android.app.LoaderManager;
 import android.content.Intent;
@@ -6,6 +6,10 @@ import android.content.Loader;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import com.espian.ribotchallenge.PersonDetailActivity;
+import com.espian.ribotchallenge.R;
+import com.espian.ribotchallenge.RibotAdapter;
+import com.espian.ribotchallenge.RibotMainActivity;
 import com.espian.ribotchallenge.data.RibotItem;
 import com.espian.ribotchallenge.loaders.TeamListLoader;
 
@@ -24,7 +28,7 @@ public class TeamGridFragment extends GridFragment implements LoaderManager.Load
 		super.onActivityCreated(saved);
 		getLoaderManager().initLoader(RibotMainActivity.LOADER_TEAM, null, this).forceLoad();
 		mAdapter = new RibotAdapter(getActivity());
-		getGridView().setNumColumns(2);
+		getGridView().setNumColumns(getResources().getInteger(R.integer.numColumns));
 		getGridView().setAdapter(mAdapter);
 		getGridView().setOnItemClickListener(this);
 	}
@@ -51,9 +55,7 @@ public class TeamGridFragment extends GridFragment implements LoaderManager.Load
 	}
 
 	@Override
-	public void onLoaderReset(Loader <List<RibotItem>> loader) {
-		loader.cancelLoad();
-	}
+	public void onLoaderReset(Loader <List<RibotItem>> loader) { }
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

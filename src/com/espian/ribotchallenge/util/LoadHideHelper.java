@@ -15,7 +15,7 @@
  *
  */
 
-package com.espian.ribotchallenge;
+package com.espian.ribotchallenge.util;
 
 import android.app.Fragment;
 import android.view.View;
