@@ -95,6 +95,7 @@ public class StudioImageLoader extends AsyncTaskLoader<List<Bitmap>> implements 
 	public Bitmap rotateBitmap(Bitmap input, ExifInterface exifInterface) {
 
 		// This doesn't actually seem to work... Exif data doesn't seem to get obtained properly
+		// Seems to be a fix using MediaStore but that won't work here as these are internal files
 		int rotationDegree = 0;
 		switch (exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)) {
 
