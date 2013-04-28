@@ -6,6 +6,7 @@ import android.app.LoaderManager;
 import android.content.Loader;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -131,6 +132,11 @@ public class StudioFragment extends Fragment implements
 		address += json.getString("county") + "\n";
 		address += json.getString("country") + "\n";
 		address += json.getString("postcode") + "\n";
+
+		// Will be handy for the location of Ribots to cache this
+		PreferenceManager.getDefaultSharedPreferences(getActivity()).edit()
+				.putString("fullAddress", address).apply();
+
 		return address;
 	}
 

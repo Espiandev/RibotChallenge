@@ -8,6 +8,7 @@ import android.content.Loader;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +16,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.espian.ribotchallenge.util.LoadHideHelper;
 import com.espian.ribotchallenge.R;
-import com.espian.ribotchallenge.util.Utilities;
 import com.espian.ribotchallenge.data.RibotItem;
 import com.espian.ribotchallenge.loaders.SingleItemLoader;
+import com.espian.ribotchallenge.util.LoadHideHelper;
+import com.espian.ribotchallenge.util.Utilities;
+
+import java.net.URLEncoder;
 
 /**
  * Author: Alex Curran
@@ -103,7 +106,14 @@ public class PersonDetailFragment extends Fragment implements LoaderManager.Load
 			// Check the button states
 			setButtonClick(twitterButton, data.getTwitterUri());
 			setButtonClick(emailButton, data.getEmailUri());
-			setButtonClick(mapButton, data.getLocationUri());
+
+			// If we've cached the full location from StudioFragment, use it
+			// if the Ribot is based in Brighton
+			String fullAddress = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("fullAddress", null);
+			if (data.getLocation().contains("Brighton") && fullAddress != null) {
+				setButtonClick(mapButton, Uri.parse("geo:0,0?q=" + URLEncoder.encode(fullAddress)));
+			} else setButtonClick(mapButton, data.getLocationUri());
+
 			hideButtonLayout.show();
 
 			// Set/hide extra data
@@ -117,15 +127,13 @@ public class PersonDetailFragment extends Fragment implements LoaderManager.Load
 	}
 
 	@Override
-	public void onLoaderReset(Loader <RibotItem> loader) {
-		loader.abandon();
-	}
+	public void onLoaderReset(Loader <RibotItem> loader) { }
 
 	/**
 	 * set a textView's text, or hide it (and associated label) if there's no text
-	 * @param textView
-	 * @param labelView
-	 * @param text
+	 * @param textView textView to set text
+	 * @param labelView label to hide if there's no text
+	 * @param text text to set to textView
 	 */
 	public void setText(TextView textView, TextView labelView, String text) {
 		if (text != null && !text.isEmpty()) {
